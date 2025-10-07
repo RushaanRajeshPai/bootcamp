@@ -74,19 +74,18 @@ export default function Landing() {
     const toggleFaq = (index) => {
         setOpenFaqs(prev =>
             prev.includes(index)
-                ? prev.filter(i => i !== index) 
-                : [...prev, index] 
+                ? prev.filter(i => i !== index)
+                : [...prev, index]
         );
     };
 
     // Animation classes
     const getAnimationClass = (elementId) => {
         const isVisible = visibleElements.has(elementId);
-        return `transition-all duration-1000 ease-out ${
-            isVisible 
-                ? 'opacity-100 translate-y-0' 
+        return `transition-all duration-1000 ease-out ${isVisible
+                ? 'opacity-100 translate-y-0'
                 : 'opacity-0 translate-y-8'
-        }`;
+            }`;
     };
 
     return (
@@ -114,16 +113,15 @@ export default function Landing() {
                             2-day online bootcamp to speak with confidence, fix everyday grammar slips, crack interviews & win group discussions.
                         </p>
                         <div className="flex flex-wrap justify-center lg:justify-start gap-2 text-sm sm:text-base text-gray-600">
-                            <span className="bg-blue-50 px-3 py-1 rounded-full font-bold">📅 Dates: 11–12 Oct</span>
-                            <span className="bg-blue-50 px-3 py-1 rounded-full font-bold">💻 Mode: Zoom</span>
-                            <span className="bg-blue-50 px-3 py-1 rounded-full font-bold">⏱️ Total time: ~6 hours</span>
-                            <span className="bg-blue-50 px-3 py-1 rounded-full font-bold">👥 Batch size: 25–35</span>
+                            <span className="px-3 py-1 rounded-full font-bold">📅 Dates: 11–12 Oct</span>
+                            <span className="px-3 py-1 rounded-full font-bold">💻 Mode: Zoom</span>
+                            <span className="px-3 py-1 rounded-full font-bold">⏱️ Total time: ~6 hours</span>
                         </div>
                     </div>
 
                     {/* Price Card */}
-                    <div className="w-full lg:w-auto mx-auto lg:mx-0">
-                    <div className="bg-white rounded-2xl shadow-xl p-6 border-2 border-cyan-400 max-w-xs mx-auto">
+                    <div className="w-full lg:w-auto mx-auto lg:mx-0 hidden lg:block">
+                        <div className="bg-white rounded-2xl shadow-xl p-6 border-2 border-cyan-400 max-w-xs mx-auto">
                             <div className="text-center mb-4">
                                 <p className="text-sm text-gray-600 mb-2">Intro Price</p>
                                 <div className="flex items-center justify-center gap-2">
@@ -145,11 +143,12 @@ export default function Landing() {
                             </p>
                         </div>
                     </div>
+                    
                 </div>
             </section>
 
             {/* Curriculum Section */}
-            <section ref={curriculumRef} className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 ${getAnimationClass('curriculum')}`}>
+            <section ref={curriculumRef} className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8  ${getAnimationClass('curriculum')}`}>
                 <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
                     Curriculum & Schedule
                 </h2>
@@ -164,9 +163,9 @@ export default function Landing() {
                         <div className="grid md:grid-cols-2 gap-8">
                             {/* Mobile: Image first, Desktop: Image second */}
                             <div className="flex justify-center items-center order-1 md:order-2">
-                                <img 
-                                    src={day1} 
-                                    alt="Day 1 - The Foundation" 
+                                <img
+                                    src={day1}
+                                    alt="Day 1 - The Foundation"
                                     className="w-full max-w-md h-auto rounded-lg border-2 w-full max-w-md h-auto rounded-lg border-cyan-500 shadow-lg hover:shadow-2xl transition duration-300 hover:shadow-cyan-700 shadow-lg "
                                 />
                             </div>
@@ -174,11 +173,11 @@ export default function Landing() {
                             {/* Mobile: Image first, Desktop: Text content */}
                             <div className="order-2 md:order-1">
                                 <div className="flex items-center mb-4">
-                                    <Target 
-                                        size={24} 
+                                    <Target
+                                        size={24}
                                         className="mr-3 text-blue-500"
                                     />
-                                    <h4 className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400">Skills You'll Master</h4>
+                                    <h4 className="text-lg font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400">Skills You Will Master</h4>
                                 </div>
 
                                 <ul className="space-y-3 mb-6">
@@ -200,11 +199,11 @@ export default function Landing() {
                                     </li>
                                 </ul>
 
-                                <div className="border-t pt-4">
+                                {/* <div className="border-t pt-4">
                                     <p className="font-semibold text-gray-800 mb-2">What We Will Cover</p>
                                     <p className="text-sm text-gray-700 mb-2">• How to build confidence & overcome fear — mindset, quick hacks, extempore practice.</p>
                                     <p className="text-sm text-gray-700 mb-6">• How to make grammar speak — practical fixes + live "Spot & Fix".</p>
-                                </div>
+                                </div> */}
                                 <div className="border-t pt-4">
                                     <p className="font-semibold text-gray-800 mb-2">Duration</p>
                                     <p className="text-sm text-gray-700">2 sessions each lasting 90 minutes</p>
@@ -222,9 +221,9 @@ export default function Landing() {
                         <div className="grid md:grid-cols-2 gap-8">
                             {/* Left side - Image */}
                             <div className="flex justify-center items-center">
-                                <img 
-                                    src={day2} 
-                                    alt="Day 2 - Career Communication" 
+                                <img
+                                    src={day2}
+                                    alt="Day 2 - Career Communication"
                                     className="w-full max-w-md h-auto rounded-lg border-2 border-cyan-700 shadow-lg hover:shadow-2xl transition duration-300 hover:shadow-cyan-700"
                                 />
                             </div>
@@ -232,11 +231,11 @@ export default function Landing() {
                             {/* Right side - Text content */}
                             <div>
                                 <div className="flex items-center mb-4">
-                                    <BookOpen 
-                                        size={24} 
+                                    <BookOpen
+                                        size={24}
                                         className="mr-3 text-blue-500"
                                     />
-                                    <h4 className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400">Key Learning Areas</h4>
+                                    <h4 className="text-lg font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400">Key Learning Areas</h4>
                                 </div>
 
                                 <ul className="space-y-3 mb-6">
@@ -258,11 +257,11 @@ export default function Landing() {
                                     </li>
                                 </ul>
 
-                                <div className="border-t pt-4">
+                                {/* <div className="border-t pt-4">
                                     <p className="font-semibold text-gray-800 mb-2">What We Will Cover</p>
                                     <p className="text-sm text-gray-700 mb-2">• How to master interviews — STAR, TMAY structure, mock interview.</p>
                                     <p className="text-sm text-gray-700 mb-6">• How to excel in communication games & real-life practice — extempore, grammar game, GD with scoring.</p>
-                                </div>
+                                </div> */}
                                 <div className="border-t pt-4">
                                     <p className="font-semibold text-gray-800 mb-2">Duration</p>
                                     <p className="text-sm text-gray-700">2 sessions each lasting 90 minutes</p>
@@ -273,23 +272,25 @@ export default function Landing() {
                 </div>
             </section>
 
+            
+
             {/* Who Should Join & What You Need */}
             <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
                 <div className="grid md:grid-cols-2 gap-8">
                     {/* Who Should Join */}
                     <div ref={whoShouldJoinRef} className={`bg-white rounded-xl shadow-lg p-6 sm:p-8 hover:cursor-pointer hover:scale-105 transition duration-300 hover:shadow-2xl ${getAnimationClass('who-should-join')}`}>
                         <h3 className="text-2xl font-bold text-gray-900 mb-6">Who should join</h3>
-                        <ul className="space-y-4">
+                        <ul className="space-y-2">
                             <li className="flex items-start">
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-3 mt-1 text-xl">•</span>
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-3 text-xl">•</span>
                                 <span className="text-gray-700">Students & freshers preparing for placements.</span>
                             </li>
                             <li className="flex items-start">
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-3 mt-1 text-xl">•</span>
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-3 text-xl">•</span>
                                 <span className="text-gray-700">Early-career professionals polishing speaking skills.</span>
                             </li>
                             <li className="flex items-start">
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-3 mt-1 text-xl">•</span>
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-3 text-xl">•</span>
                                 <span className="text-gray-700">Anyone who freezes on camera or in GDs.</span>
                             </li>
                         </ul>
@@ -298,7 +299,7 @@ export default function Landing() {
                     {/* What You Need */}
                     <div ref={whatYouNeedRef} className={`bg-white rounded-xl shadow-lg p-6 sm:p-8 hover:cursor-pointer hover:scale-105 transition duration-300 hover:shadow-2xl ${getAnimationClass('what-you-need')}`}>
                         <h3 className="text-2xl font-bold text-gray-900 mb-6">What you need</h3>
-                        <ul className="space-y-4">
+                        <ul className="space-y-2">
                             <li className="flex items-start">
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-3 mt-1 text-xl">•</span>
                                 <span className="text-gray-700">Zoom on laptop/phone, stable internet.</span>
@@ -317,16 +318,42 @@ export default function Landing() {
             </section>
 
             {/* Enrollment Section */}
-            <section ref={enrollRef} id="enroll-section" className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 scroll-mt-20 ${getAnimationClass('enroll')}`}>
+            <section ref={enrollRef} id="enroll-section" className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 scroll-mt-20 ${getAnimationClass('enroll')}`}>
                 <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
                     Enroll Now
                 </h2>
+
+                {/* Mobile-only Price Card */}
+                <div className="lg:hidden mb-8">
+                    <div className="bg-white rounded-2xl shadow-xl p-6 border-2 border-cyan-400 max-w-xs mx-auto">
+                        <div className="text-center mb-4">
+                            <p className="text-sm text-gray-600 mb-2">Intro Price</p>
+                            <div className="flex items-center justify-center gap-2">
+                                <span className="text-5xl font-bold text-gray-800">₹99</span>
+                                <div className="flex flex-col items-center">
+                                    <span className="text-2xl text-gray-400 line-through">₹499</span>
+                                    <span className="text-xs text-red-500 font-semibold">Special Discount</span>
+                                </div>
+                            </div>
+                        </div>
+                        {/* <button
+                            onClick={scrollToEnroll}
+                            className="w-full bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 font-bold text-white font-semibold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 mb-3"
+                        >
+                            <span className="hidden sm:inline">Enroll Now</span>
+                            <span className="sm:hidden">Enroll</span>
+                        </button> */}
+                        <p className="text-xs text-center text-gray-500">
+                            ⚡ Limited seats · First-come first-served
+                        </p>
+                    </div>
+                </div>
 
                 <div className="grid md:grid-cols-2 gap-8">
                     {/* Step 1 - Payment */}
                     <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 hover:cursor-pointer hover:scale-105 transition duration-300 hover:shadow-2xl">
                         <h3 className="text-2xl font-bold text-gray-900 mb-6">Step 1 — Pay via UPI</h3>
-                        <p className="text-gray-700 mb-6">Send ₹100 to the UPI ID below or scan the QR code.</p>
+                        <p className="text-gray-700 mb-6">Send ₹99 to the UPI ID below or scan the QR code.</p>
 
                         <div className="bg-gray-50 rounded-lg p-4 mb-6">
                             <p className="text-sm text-gray-600 mb-2">UPI ID:</p>
