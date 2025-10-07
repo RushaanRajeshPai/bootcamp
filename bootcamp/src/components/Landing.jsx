@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Mail, Phone, ChevronDown, Target, BookOpen } from 'lucide-react';
+import { Mail, Phone, ChevronDown, Target, BookOpen, Users, CheckSquare } from 'lucide-react';
 import logo1 from '../assets/logo1.png';
 import qr from '../assets/qr.jpg';
 import day1 from '../assets/day1.jpg';
@@ -83,8 +83,8 @@ export default function Landing() {
     const getAnimationClass = (elementId) => {
         const isVisible = visibleElements.has(elementId);
         return `transition-all duration-1000 ease-out ${isVisible
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-0 translate-y-8'
+            ? 'opacity-100 translate-y-0'
+            : 'opacity-0 translate-y-8'
             }`;
     };
 
@@ -103,61 +103,53 @@ export default function Landing() {
             </nav>
 
             {/* Hero Section */}
-            <section ref={heroRef} className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 mt-12 ${getAnimationClass('hero')}`}>
-                <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
-                    <div className="flex-1 text-center lg:text-left">
+            <section ref={heroRef} className={`max-w-7xl mx-auto px-8 sm:px-6 lg:px-8 py-8 pt-28 ${getAnimationClass('hero')}`}>
+                <div className="flex flex-col lg:flex-row items-center lg:items-center justify-between gap-8">
+                    <div className="flex-1 text-center">
                         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
                             Speak Smart Weekend
                         </h1>
-                        <p className="text-lg sm:text-xl text-gray-700 mb-6 max-w-3xl mx-auto lg:mx-0">
-                            2-day online bootcamp to speak with confidence, fix everyday grammar slips, crack interviews & win group discussions.
+                        <p className="text-lg sm:text-xl text-gray-700 mb-6 max-w-3xl mx-auto ">
+                            <span className="relative inline-block px-3">
+                                <span className="absolute inset-0 transform -skew-x-12" style={{
+                                    background: 'linear-gradient(104deg, rgba(254, 240, 138, 0.4) 0%, rgba(253, 224, 71, 0.8) 20%, rgba(254, 240, 138, 0.6) 39%, rgba(253, 224, 71, 0.7) 70%, rgba(254, 240, 138, 0.5) 100%)',
+                                    borderRadius: '20% 25% 20% 24%',
+                                    padding: '0.1em 0.3em',
+                                    margin: '-0.1em -0.3em'
+                                }}></span>
+                                <span className="relative font-bold">2-day online bootcamp</span>
+                            </span> to speak with confidence, fix everyday grammar slips, crack interviews & win group discussions.
                         </p>
-                        <div className="flex flex-wrap justify-center lg:justify-start gap-2 text-sm sm:text-base text-gray-600">
-                            <span className="px-3 py-1 rounded-full font-bold">📅 Dates: 11–12 Oct</span>
-                            <span className="px-3 py-1 rounded-full font-bold">💻 Mode: Zoom</span>
-                            <span className="px-3 py-1 rounded-full font-bold">⏱️ Total time: ~6 hours</span>
+                        <div className="flex flex-wrap justify-center gap-2 text-sm sm:text-base text-black">
+                            <span className="px-3 py-1 rounded-full font-bold">📅 Dates: 11-12 Oct</span>
+                            <span className="px-3 py-1 rounded-full font-bold">💻 Mode: Google Meet</span>
+                            <span className="px-3 py-1 rounded-full font-bold">⏱️ Course Duration: ~6 hours</span>
                         </div>
                     </div>
-
-                    {/* Price Card */}
-                    <div className="w-full lg:w-auto mx-auto lg:mx-0 hidden lg:block">
-                        <div className="bg-white rounded-2xl shadow-xl p-6 border-2 border-cyan-400 max-w-xs mx-auto">
-                            <div className="text-center mb-4">
-                                <p className="text-sm text-gray-600 mb-2">Intro Price</p>
-                                <div className="flex items-center justify-center gap-2">
-                                    <span className="text-5xl font-bold text-gray-800">₹99</span>
-                                    <div className="flex flex-col items-center">
-                                        <span className="text-2xl text-gray-400 line-through">₹499</span>
-                                        <span className="text-xs text-red-500 font-semibold">Special Discount</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <button
-                                onClick={scrollToEnroll}
-                                className="w-full bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 font-bold text-white font-semibold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 mb-3"
-                            >
-                                Enroll Now
-                            </button>
-                            <p className="text-xs text-center text-gray-500">
-                                ⚡ Limited seats · First-come first-served
-                            </p>
-                        </div>
-                    </div>
-                    
                 </div>
             </section>
 
             {/* Curriculum Section */}
             <section ref={curriculumRef} className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8  ${getAnimationClass('curriculum')}`}>
-                <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
+                <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-4">
                     Curriculum & Schedule
                 </h2>
 
                 <div className="space-y-8">
                     {/* Day 1 */}
                     <div ref={day1Ref} className={`bg-white rounded-xl shadow-lg p-6 sm:p-8 hover:shadow-2xl transition duration-300 hover:cursor-pointer ${getAnimationClass('day1')}`}>
-                        <div className="text-center mb-6">
-                            <h3 className="text-2xl font-bold text-gray-900">Day 1 - The Foundation</h3>
+                        <div className="text-center mb-12">
+                            <h3 className="text-2xl font-bold text-gray-900 inline-block">
+                                <span className="relative inline-block px-3">
+                                    <span className="absolute inset-0 transform -skew-x-12" style={{
+                                        background: 'linear-gradient(104deg, rgba(147, 197, 253, 0.3) 0%, rgba(147, 197, 253, 0.7) 20%, rgba(147, 197, 253, 0.5) 39%, rgba(147, 197, 253, 0.7) 70%, rgba(147, 197, 253, 0.4) 100%)',
+                                        borderRadius: '20% 25% 20% 24%',
+                                        padding: '0.1em 0.3em',
+                                        margin: '-0.1em -0.3em'
+                                    }}></span>
+                                    <span className="relative">Day 1 - The Foundation</span>
+                                </span>
+                            </h3>
                         </div>
 
                         <div className="grid md:grid-cols-2 gap-8">
@@ -181,20 +173,20 @@ export default function Landing() {
                                 </div>
 
                                 <ul className="space-y-3 mb-6">
-                                    <li className="flex items-start">
-                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2 mt-1">•</span>
+                                    <li className="flex items-center">
+                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2">•</span>
                                         <span className="text-gray-700">Beat stage fear with mindset, breathing & grounding tools.</span>
                                     </li>
-                                    <li className="flex items-start">
-                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2 mt-1">•</span>
+                                    <li className="flex items-center">
+                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2">•</span>
                                         <span className="text-gray-700">Project confidence using the <em>Preparation → Practice → Presence</em> approach.</span>
                                     </li>
-                                    <li className="flex items-start">
-                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2 mt-1">•</span>
+                                    <li className="flex items-center">
+                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2">•</span>
                                         <span className="text-gray-700">Grammar that speaks: tense fixes, subject-verb agreement, transitions.</span>
                                     </li>
-                                    <li className="flex items-start">
-                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2 mt-1">•</span>
+                                    <li className="flex items-center">
+                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2">•</span>
                                         <span className="text-gray-700">Hands-on: Extempore + "Spot & Fix" grammar game.</span>
                                     </li>
                                 </ul>
@@ -214,8 +206,18 @@ export default function Landing() {
 
                     {/* Day 2 */}
                     <div ref={day2Ref} className={`bg-white rounded-xl shadow-lg p-6 sm:p-8 hover:shadow-2xl transition duration-300 hover:cursor-pointer ${getAnimationClass('day2')}`}>
-                        <div className="text-center mb-6">
-                            <h3 className="text-2xl font-bold text-gray-900">Day 2 - Career Communication</h3>
+                        <div className="text-center mb-12">
+                            <h3 className="text-2xl font-bold text-gray-900 inline-block">
+                                <span className="relative inline-block px-3">
+                                    <span className="absolute inset-0 transform -skew-x-12" style={{
+                                        background: 'linear-gradient(104deg, rgba(147, 197, 253, 0.3) 0%, rgba(147, 197, 253, 0.7) 20%, rgba(147, 197, 253, 0.5) 39%, rgba(147, 197, 253, 0.7) 70%, rgba(147, 197, 253, 0.4) 100%)',
+                                        borderRadius: '20% 25% 20% 24%',
+                                        padding: '0.1em 0.3em',
+                                        margin: '-0.1em -0.3em'
+                                    }}></span>
+                                    <span className="relative">Day 2 - Career Communication</span>
+                                </span>
+                            </h3>
                         </div>
 
                         <div className="grid md:grid-cols-2 gap-8">
@@ -239,20 +241,20 @@ export default function Landing() {
                                 </div>
 
                                 <ul className="space-y-3 mb-6">
-                                    <li className="flex items-start">
-                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2 mt-1">•</span>
+                                    <li className="flex items-center">
+                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2">•</span>
                                         <span className="text-gray-700">Answer "Tell me about yourself" with clarity using STAR.</span>
                                     </li>
-                                    <li className="flex items-start">
-                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2 mt-1">•</span>
+                                    <li className="flex items-center">
+                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2">•</span>
                                         <span className="text-gray-700">Virtual interview do's & don'ts that actually matter.</span>
                                     </li>
-                                    <li className="flex items-start">
-                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2 mt-1">•</span>
+                                    <li className="flex items-center">
+                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2">•</span>
                                         <span className="text-gray-700">Mock interviews in pairs with rapid feedback.</span>
                                     </li>
-                                    <li className="flex items-start">
-                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2 mt-1">•</span>
+                                    <li className="flex items-center">
+                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2">•</span>
                                         <span className="text-gray-700">Group Discussion drills with a simple scoring rubric.</span>
                                     </li>
                                 </ul>
@@ -272,24 +274,30 @@ export default function Landing() {
                 </div>
             </section>
 
-            
+
 
             {/* Who Should Join & What You Need */}
-            <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+            <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-12">
                 <div className="grid md:grid-cols-2 gap-8">
                     {/* Who Should Join */}
                     <div ref={whoShouldJoinRef} className={`bg-white rounded-xl shadow-lg p-6 sm:p-8 hover:cursor-pointer hover:scale-105 transition duration-300 hover:shadow-2xl ${getAnimationClass('who-should-join')}`}>
-                        <h3 className="text-2xl font-bold text-gray-900 mb-6">Who should join</h3>
+                        <div className="flex items-center mb-6">
+                            <Users
+                                size={24}
+                                className="mr-3 text-blue-500"
+                            />
+                            <h3 className="text-2xl font-bold text-gray-900">Who should join</h3>
+                        </div>
                         <ul className="space-y-2">
-                            <li className="flex items-start">
+                            <li className="flex items-center">
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-3 text-xl">•</span>
                                 <span className="text-gray-700">Students & freshers preparing for placements.</span>
                             </li>
-                            <li className="flex items-start">
+                            <li className="flex items-center">
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-3 text-xl">•</span>
                                 <span className="text-gray-700">Early-career professionals polishing speaking skills.</span>
                             </li>
-                            <li className="flex items-start">
+                            <li className="flex items-center">
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-3 text-xl">•</span>
                                 <span className="text-gray-700">Anyone who freezes on camera or in GDs.</span>
                             </li>
@@ -298,18 +306,24 @@ export default function Landing() {
 
                     {/* What You Need */}
                     <div ref={whatYouNeedRef} className={`bg-white rounded-xl shadow-lg p-6 sm:p-8 hover:cursor-pointer hover:scale-105 transition duration-300 hover:shadow-2xl ${getAnimationClass('what-you-need')}`}>
-                        <h3 className="text-2xl font-bold text-gray-900 mb-6">What you need</h3>
+                        <div className="flex items-center mb-6">
+                            <CheckSquare
+                                size={24}
+                                className="mr-3 text-blue-500"
+                            />
+                            <h3 className="text-2xl font-bold text-gray-900">What you need</h3>
+                        </div>
                         <ul className="space-y-2">
-                            <li className="flex items-start">
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-3 mt-1 text-xl">•</span>
+                            <li className="flex items-center">
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-3 text-xl">•</span>
                                 <span className="text-gray-700">Zoom on laptop/phone, stable internet.</span>
                             </li>
-                            <li className="flex items-start">
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-3 mt-1 text-xl">•</span>
+                            <li className="flex items-center">
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-3 text-xl">•</span>
                                 <span className="text-gray-700">Mic + camera (recommended for practice rooms).</span>
                             </li>
-                            <li className="flex items-start">
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-3 mt-1 text-xl">•</span>
+                            <li className="flex items-center">
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-3 text-xl">•</span>
                                 <span className="text-gray-700">Willingness to speak & try!</span>
                             </li>
                         </ul>
@@ -318,94 +332,202 @@ export default function Landing() {
             </section>
 
             {/* Enrollment Section */}
-            <section ref={enrollRef} id="enroll-section" className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 scroll-mt-20 ${getAnimationClass('enroll')}`}>
-                <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
-                    Enroll Now
-                </h2>
+            <section ref={enrollRef} id="enroll-section" className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 scroll-mt-20 ${getAnimationClass('enroll')}`}>
+                <div className="text-center mb-4">
+                    <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                        Secure Your Spot Now
+                    </h2>
+                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                        Join 25+ students who are already transforming their communication skills. Limited seats available!
+                    </p>
+                </div>
 
                 {/* Mobile-only Price Card */}
-                <div className="lg:hidden mb-8">
-                    <div className="bg-white rounded-2xl shadow-xl p-6 border-2 border-cyan-400 max-w-xs mx-auto">
+                <div className="mb-8">
+                    <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl shadow-xl p-6 border-2 border-cyan-400 max-w-xs mx-auto relative overflow-hidden">
+                        <div className="absolute top-0 right-0 bg-red-500 text-white text-xs px-3 py-1 rounded-bl-lg font-semibold">
+                            LIMITED TIME
+                        </div>
                         <div className="text-center mb-4">
                             <p className="text-sm text-gray-600 mb-2">Intro Price</p>
                             <div className="flex items-center justify-center gap-2">
                                 <span className="text-5xl font-bold text-gray-800">₹99</span>
                                 <div className="flex flex-col items-center">
                                     <span className="text-2xl text-gray-400 line-through">₹499</span>
-                                    <span className="text-xs text-red-500 font-semibold">Special Discount</span>
+                                    <span className="text-xs text-red-500 font-semibold">80% OFF</span>
                                 </div>
                             </div>
                         </div>
-                        {/* <button
-                            onClick={scrollToEnroll}
-                            className="w-full bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 font-bold text-white font-semibold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 mb-3"
-                        >
-                            <span className="hidden sm:inline">Enroll Now</span>
-                            <span className="sm:hidden">Enroll</span>
-                        </button> */}
                         <p className="text-xs text-center text-gray-500">
-                            ⚡ Limited seats · First-come first-served
+                            ⚡ Only 8 seats left · First-come first-served
                         </p>
                     </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="grid lg:grid-cols-2 gap-8">
                     {/* Step 1 - Payment */}
-                    <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 hover:cursor-pointer hover:scale-105 transition duration-300 hover:shadow-2xl">
-                        <h3 className="text-2xl font-bold text-gray-900 mb-6">Step 1 — Pay via UPI</h3>
+                    <div className="bg-gradient-to-br from-blue-50 to-white rounded-2xl shadow-xl p-6 sm:p-8 hover:shadow-2xl transition-all duration-300 border border-blue-100 relative">
+                        <div className="absolute -top-3 left-6 bg-blue-500 text-white text-sm px-4 py-1 rounded-full font-semibold">
+                            Step 1
+                        </div>
+                        <div className="flex items-center mb-6 mt-4">
+                            <div className="bg-blue-500 p-3 rounded-xl mr-4">
+                                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                                </svg>
+                            </div>
+                            <h3 className="text-xl font-bold text-gray-900">Pay via UPI</h3>
+                        </div>
+
                         <p className="text-gray-700 mb-6">Send ₹99 to the UPI ID below or scan the QR code.</p>
 
-                        <div className="bg-gray-50 rounded-lg p-4 mb-6">
-                            <p className="text-sm text-gray-600 mb-2">UPI ID:</p>
-                            <p className="text-xl font-mono font-semibold text-blue-600 break-all">ajveer.choudhry@oksbi</p>
+                        <div className="flex justify-center mb-6">
+                            <div className="bg-white p-4 rounded-xl border-2 border-gray-200 shadow-lg">
+                                <img
+                                    src={qr}
+                                    alt="UPI QR Code for Payment"
+                                    className="w-64 h-64 object-contain rounded"
+                                />
+                            </div>
                         </div>
 
-                        <div className="flex justify-center mb-4">
-                            {/* <div className="bg-white p-4 rounded-lg border-2 border-gray-200"> */}
-                            <img
-                                src={qr}
-                                alt="UPI QR Code for Payment"
-                                className="w-96 h-96 object-contain rounded"
-                            />
-                            {/* </div> */}
-                        </div>
 
-                        <p className="text-sm text-gray-600 text-center italic">
-                            💡 Add your name in the payment note for faster verification.
-                        </p>
                     </div>
 
                     {/* Step 2 - Google Form */}
-                    <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 hover:cursor-pointer hover:scale-105 transition duration-300 hover:shadow-2xl">
-                        <h3 className="text-2xl font-bold text-gray-900 mb-6">Step 2 — Submit Google Form</h3>
+                    <div className="bg-gradient-to-br from-blue-50 to-white rounded-2xl shadow-xl p-6 sm:p-8 hover:shadow-2xl transition-all duration-300 border border-blue-100 relative">
+                        <div className="absolute -top-3 left-6 bg-blue-500 text-white text-sm px-4 py-1 rounded-full font-semibold">
+                            Step 2
+                        </div>
+                        <div className="flex items-center mb-6 mt-4">
+                            <div className="bg-blue-500 p-3 rounded-xl mr-4">
+                                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                            </div>
+                            <h3 className="text-xl font-bold text-gray-900">Submit Form</h3>
+                        </div>
+
                         <p className="text-gray-700 mb-6">
                             Share your details & upload payment screenshot. You'll get the Zoom link on WhatsApp/email within a few hours.
                         </p>
 
                         <button
                             onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSdmKVYfSSSGoHJ3cTK2xUc28MaDvsV_s-xYsdmo5FhRrJLhPw/viewform?usp=dialog', '_blank')}
-                            className="w-full bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 text-white font-bold py-4 px-6 rounded-lg transition duration-300 transform hover:scale-105 mb-6 text-lg"
+                            className="w-full bg-blue-500 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 mb-6 text-lg shadow-lg hover:shadow-xl"
                         >
-                            Open Registration Form
+                            <div className="flex items-center justify-center">
+                                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                                Open Registration Form
+                            </div>
                         </button>
 
-                        <div className="space-y-2 text-sm text-gray-700">
-                            <p className="flex items-start">
-                                <span className="mr-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400">•</span>
-                                <span>Seats are confirmed only after form submission.</span>
-                            </p>
-                            <p className="flex items-start">
-                                <span className="mr-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400">•</span>
-                                <span>Fee is non-refundable; transfer allowed to next batch if you inform 24h prior.</span>
+                        <div className="space-y-3 text-sm">
+                            <div className="flex items-start bg-blue-50 p-3 rounded-lg">
+                                <svg className="w-4 h-4 text-blue-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span className="text-blue-800">Seats are confirmed only after form submission</span>
+                            </div>
+                            <div className="flex items-start bg-orange-50 p-3 rounded-lg">
+                                <svg className="w-4 h-4 text-orange-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                                </svg>
+                                <span className="text-orange-800">Fee is non-refundable</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Step 3 - What Happens Next */}
+                    {/* <div className="bg-gradient-to-br from-purple-50 to-white rounded-2xl shadow-xl p-6 sm:p-8 hover:shadow-2xl transition-all duration-300 border border-purple-100 relative">
+                        <div className="absolute -top-3 left-6 bg-purple-500 text-white text-sm px-4 py-1 rounded-full font-semibold">
+                            Step 3
+                        </div>
+                        <div className="flex items-center mb-6 mt-4">
+                            <div className="bg-purple-500 p-3 rounded-xl mr-4">
+                                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                                </svg>
+                            </div>
+                            <h3 className="text-xl font-bold text-gray-900">Get Started</h3>
+                        </div>
+                        
+                        <div className="space-y-4">
+                            <div className="flex items-start">
+                                <div className="bg-purple-100 p-2 rounded-lg mr-3">
+                                    <svg className="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p className="font-semibold text-gray-800">Within 2 hours</p>
+                                    <p className="text-sm text-gray-600">Receive confirmation email with Zoom link</p>
+                                </div>
+                            </div>
+                            
+                            <div className="flex items-start">
+                                <div className="bg-purple-100 p-2 rounded-lg mr-3">
+                                    <svg className="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p className="font-semibold text-gray-800">Day before bootcamp</p>
+                                    <p className="text-sm text-gray-600">Get WhatsApp reminder with session details</p>
+                                </div>
+                            </div>
+                            
+                            <div className="flex items-start">
+                                <div className="bg-purple-100 p-2 rounded-lg mr-3">
+                                    <svg className="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p className="font-semibold text-gray-800">Bootcamp day</p>
+                                    <p className="text-sm text-gray-600">Join 25+ students for an amazing learning experience</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="mt-6 bg-gradient-to-r from-purple-100 to-pink-100 rounded-lg p-4">
+                            <p className="text-sm text-purple-800 text-center font-medium">
+                                🎉 <strong>Bonus:</strong> Get lifetime access to our communication tips WhatsApp group!
                             </p>
                         </div>
+                    </div> */}
+                </div>
+
+                {/* Trust Indicators */}
+                <div className="mt-12 text-center">
+                    <div className="flex flex-wrap justify-center items-center gap-8 text-sm text-gray-600">
+                        <div className="flex items-center">
+                            <svg className="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>Secure Payment</span>
+                        </div>
+                        <div className="flex items-center">
+                            <svg className="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>Instant Confirmation</span>
+                        </div>
+                        {/* <div className="flex items-center">
+                            <svg className="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>Money-back Guarantee</span>
+                        </div> */}
                     </div>
                 </div>
             </section>
 
             {/* FAQ Section */}
-            <section ref={faqRef} className={`max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 ${getAnimationClass('faq')}`}>
-                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-12 text-center">Frequently Asked Questions</h2>
+            <section ref={faqRef} className={`max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-8 ${getAnimationClass('faq')}`}>
+                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
 
                 <div className="space-y-4">
                     <div className="bg-white rounded-xl shadow-md overflow-hidden">
