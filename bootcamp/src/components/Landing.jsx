@@ -107,7 +107,7 @@ export default function Landing() {
                 <div className="flex flex-col lg:flex-row items-center lg:items-center justify-between gap-8">
                     <div className="flex-1 text-center">
                         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
-                            Speak Smart Weekend
+                        The Speaking Lab
                         </h1>
                         <p className="text-lg sm:text-xl text-gray-700 mb-6 max-w-3xl mx-auto ">
                             <span className="relative inline-block px-3">
@@ -316,7 +316,7 @@ export default function Landing() {
                         <ul className="space-y-2">
                             <li className="flex items-center">
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-3 text-xl">•</span>
-                                <span className="text-gray-700">Zoom on laptop/phone, stable internet.</span>
+                                <span className="text-gray-700">Google Meet on laptop/phone, stable internet.</span>
                             </li>
                             <li className="flex items-center">
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-3 text-xl">•</span>
@@ -409,7 +409,7 @@ export default function Landing() {
                         </div>
 
                         <p className="text-gray-700 mb-6">
-                            Share your details & upload payment screenshot. You'll get the Zoom link on WhatsApp/email within a few hours.
+                            Share your details & upload payment screenshot. You'll get the Google Meet link on WhatsApp/email within a few hours.
                         </p>
 
                         <button
@@ -439,65 +439,6 @@ export default function Landing() {
                             </div>
                         </div>
                     </div>
-
-                    {/* Step 3 - What Happens Next */}
-                    {/* <div className="bg-gradient-to-br from-purple-50 to-white rounded-2xl shadow-xl p-6 sm:p-8 hover:shadow-2xl transition-all duration-300 border border-purple-100 relative">
-                        <div className="absolute -top-3 left-6 bg-purple-500 text-white text-sm px-4 py-1 rounded-full font-semibold">
-                            Step 3
-                        </div>
-                        <div className="flex items-center mb-6 mt-4">
-                            <div className="bg-purple-500 p-3 rounded-xl mr-4">
-                                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                                </svg>
-                            </div>
-                            <h3 className="text-xl font-bold text-gray-900">Get Started</h3>
-                        </div>
-                        
-                        <div className="space-y-4">
-                            <div className="flex items-start">
-                                <div className="bg-purple-100 p-2 rounded-lg mr-3">
-                                    <svg className="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p className="font-semibold text-gray-800">Within 2 hours</p>
-                                    <p className="text-sm text-gray-600">Receive confirmation email with Zoom link</p>
-                                </div>
-                            </div>
-                            
-                            <div className="flex items-start">
-                                <div className="bg-purple-100 p-2 rounded-lg mr-3">
-                                    <svg className="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p className="font-semibold text-gray-800">Day before bootcamp</p>
-                                    <p className="text-sm text-gray-600">Get WhatsApp reminder with session details</p>
-                                </div>
-                            </div>
-                            
-                            <div className="flex items-start">
-                                <div className="bg-purple-100 p-2 rounded-lg mr-3">
-                                    <svg className="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p className="font-semibold text-gray-800">Bootcamp day</p>
-                                    <p className="text-sm text-gray-600">Join 25+ students for an amazing learning experience</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="mt-6 bg-gradient-to-r from-purple-100 to-pink-100 rounded-lg p-4">
-                            <p className="text-sm text-purple-800 text-center font-medium">
-                                🎉 <strong>Bonus:</strong> Get lifetime access to our communication tips WhatsApp group!
-                            </p>
-                        </div>
-                    </div> */}
                 </div>
 
                 {/* Trust Indicators */}
