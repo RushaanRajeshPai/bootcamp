@@ -122,7 +122,7 @@ export default function Landing() {
                         </p>
                         <div className="flex flex-wrap justify-center gap-2 text-sm sm:text-base text-black">
                             <span className="px-3 py-1 rounded-full font-bold">📅 Dates: 11-12 Oct</span>
-                            <span className="px-3 py-1 rounded-full font-bold">💻 Mode: Google Meet</span>
+                            <span className="px-3 py-1 rounded-full font-bold">💻 Mode: Zoom</span>
                             <span className="px-3 py-1 rounded-full font-bold">⏱️ Course Duration: ~6 hours</span>
                         </div>
                     </div>
@@ -316,7 +316,7 @@ export default function Landing() {
                         <ul className="space-y-2">
                             <li className="flex items-center">
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-3 text-xl">•</span>
-                                <span className="text-gray-700">Google Meet on laptop/phone, stable internet.</span>
+                                <span className="text-gray-700">Zoom on laptop/phone, stable internet.</span>
                             </li>
                             <li className="flex items-center">
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-3 text-xl">•</span>
@@ -409,7 +409,7 @@ export default function Landing() {
                         </div>
 
                         <p className="text-gray-700 mb-6">
-                            Share your details & upload payment screenshot. You'll get the Google Meet link on WhatsApp/email within a few hours.
+                            Share your details & upload payment screenshot. You'll get the Zoom link on WhatsApp/email within a few hours.
                         </p>
 
                         <button
