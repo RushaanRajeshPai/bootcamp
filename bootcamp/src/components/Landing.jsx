@@ -1,10 +1,68 @@
-import React, { useState } from 'react';
-import { Mail, Phone, ChevronDown } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Mail, Phone, ChevronDown, Target, BookOpen } from 'lucide-react';
 import logo1 from '../assets/logo1.png';
 import qr from '../assets/qr.jpg';
+import day1 from '../assets/day1.jpg';
+import day2 from '../assets/day2.jpg';
 
 export default function Landing() {
     const [openFaqs, setOpenFaqs] = useState([]);
+    const [visibleElements, setVisibleElements] = useState(new Set());
+
+    // Create refs for each section
+    const heroRef = useRef(null);
+    const curriculumRef = useRef(null);
+    const day1Ref = useRef(null);
+    const day2Ref = useRef(null);
+    const whoShouldJoinRef = useRef(null);
+    const whatYouNeedRef = useRef(null);
+    const enrollRef = useRef(null);
+    const faqRef = useRef(null);
+    const footerRef = useRef(null);
+
+    // Intersection Observer for scroll animations
+    useEffect(() => {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    setVisibleElements(prev => new Set([...prev, entry.target.id]));
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        const sections = [
+            { ref: heroRef, id: 'hero' },
+            { ref: curriculumRef, id: 'curriculum' },
+            { ref: day1Ref, id: 'day1' },
+            { ref: day2Ref, id: 'day2' },
+            { ref: whoShouldJoinRef, id: 'who-should-join' },
+            { ref: whatYouNeedRef, id: 'what-you-need' },
+            { ref: enrollRef, id: 'enroll' },
+            { ref: faqRef, id: 'faq' },
+            { ref: footerRef, id: 'footer' }
+        ];
+
+        sections.forEach(({ ref, id }) => {
+            if (ref.current) {
+                ref.current.id = id;
+                observer.observe(ref.current);
+            }
+        });
+
+        return () => {
+            sections.forEach(({ ref }) => {
+                if (ref.current) {
+                    observer.unobserve(ref.current);
+                }
+            });
+        };
+    }, []);
 
     const scrollToEnroll = () => {
         document.getElementById('enroll-section').scrollIntoView({
@@ -19,6 +77,16 @@ export default function Landing() {
                 ? prev.filter(i => i !== index) 
                 : [...prev, index] 
         );
+    };
+
+    // Animation classes
+    const getAnimationClass = (elementId) => {
+        const isVisible = visibleElements.has(elementId);
+        return `transition-all duration-1000 ease-out ${
+            isVisible 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-8'
+        }`;
     };
 
     return (
@@ -36,7 +104,7 @@ export default function Landing() {
             </nav>
 
             {/* Hero Section */}
-            <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 mt-12">
+            <section ref={heroRef} className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 mt-12 ${getAnimationClass('hero')}`}>
                 <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
                     <div className="flex-1 text-center lg:text-left">
                         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
@@ -46,20 +114,24 @@ export default function Landing() {
                             2-day online bootcamp to speak with confidence, fix everyday grammar slips, crack interviews & win group discussions.
                         </p>
                         <div className="flex flex-wrap justify-center lg:justify-start gap-2 text-sm sm:text-base text-gray-600">
-                            <span className="bg-blue-50 px-3 py-1 rounded-full">📅 Dates: 11–12 Oct</span>
-                            <span className="bg-blue-50 px-3 py-1 rounded-full">💻 Mode: Zoom</span>
-                            <span className="bg-blue-50 px-3 py-1 rounded-full">⏱️ Total time: ~6 hours</span>
-                            <span className="bg-blue-50 px-3 py-1 rounded-full">👥 Batch size: 25–35</span>
+                            <span className="bg-blue-50 px-3 py-1 rounded-full font-bold">📅 Dates: 11–12 Oct</span>
+                            <span className="bg-blue-50 px-3 py-1 rounded-full font-bold">💻 Mode: Zoom</span>
+                            <span className="bg-blue-50 px-3 py-1 rounded-full font-bold">⏱️ Total time: ~6 hours</span>
+                            <span className="bg-blue-50 px-3 py-1 rounded-full font-bold">👥 Batch size: 25–35</span>
                         </div>
                     </div>
 
                     {/* Price Card */}
                     <div className="w-full lg:w-auto mx-auto lg:mx-0">
-                        <div className="bg-white rounded-2xl shadow-xl p-6 border-2 border-cyan-400 max-w-xs mx-auto">
+                    <div className="bg-white rounded-2xl shadow-xl p-6 border-2 border-cyan-400 max-w-xs mx-auto">
                             <div className="text-center mb-4">
                                 <p className="text-sm text-gray-600 mb-2">Intro Price</p>
                                 <div className="flex items-center justify-center gap-2">
-                                    <span className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400">₹100</span>
+                                    <span className="text-5xl font-bold text-gray-800">₹99</span>
+                                    <div className="flex flex-col items-center">
+                                        <span className="text-2xl text-gray-400 line-through">₹499</span>
+                                        <span className="text-xs text-red-500 font-semibold">Special Discount</span>
+                                    </div>
                                 </div>
                             </div>
                             <button
@@ -77,79 +149,125 @@ export default function Landing() {
             </section>
 
             {/* Curriculum Section */}
-            <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+            <section ref={curriculumRef} className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 ${getAnimationClass('curriculum')}`}>
                 <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
                     Curriculum & Schedule
                 </h2>
 
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="space-y-8">
                     {/* Day 1 */}
-                    <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 hover:shadow-2xl transition duration-300 hover:cursor-pointer hover:scale-105">
-                        <div className="flex justify-between items-center mb-6">
-                            <h3 className="text-2xl font-bold text-gray-900">Day 1 - Saturday</h3>
-                            <span className="text-sm text-gray-600 bg-gray-100 px-3 py-1 rounded-full">2 sessions x 90 mins</span>
+                    <div ref={day1Ref} className={`bg-white rounded-xl shadow-lg p-6 sm:p-8 hover:shadow-2xl transition duration-300 hover:cursor-pointer ${getAnimationClass('day1')}`}>
+                        <div className="text-center mb-6">
+                            <h3 className="text-2xl font-bold text-gray-900">Day 1 - The Foundation</h3>
                         </div>
 
-                        <h4 className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mb-4">The Foundation</h4>
+                        <div className="grid md:grid-cols-2 gap-8">
+                            {/* Mobile: Image first, Desktop: Image second */}
+                            <div className="flex justify-center items-center order-1 md:order-2">
+                                <img 
+                                    src={day1} 
+                                    alt="Day 1 - The Foundation" 
+                                    className="w-full max-w-md h-auto rounded-lg border-2 w-full max-w-md h-auto rounded-lg border-cyan-500 shadow-lg hover:shadow-2xl transition duration-300 hover:shadow-cyan-700 shadow-lg "
+                                />
+                            </div>
 
-                        <ul className="space-y-3 mb-6">
-                            <li className="flex items-start">
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2 mt-1">•</span>
-                                <span className="text-gray-700">Beat stage fear with mindset, breathing & grounding tools.</span>
-                            </li>
-                            <li className="flex items-start">
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2 mt-1">•</span>
-                                <span className="text-gray-700">Project confidence using the <em>Preparation → Practice → Presence</em> approach.</span>
-                            </li>
-                            <li className="flex items-start">
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2 mt-1">•</span>
-                                <span className="text-gray-700">Grammar that speaks: tense fixes, subject-verb agreement, transitions.</span>
-                            </li>
-                            <li className="flex items-start">
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2 mt-1">•</span>
-                                <span className="text-gray-700">Hands-on: Extempore + "Spot & Fix" grammar game.</span>
-                            </li>
-                        </ul>
+                            {/* Mobile: Image first, Desktop: Text content */}
+                            <div className="order-2 md:order-1">
+                                <div className="flex items-center mb-4">
+                                    <Target 
+                                        size={24} 
+                                        className="mr-3 text-blue-500"
+                                    />
+                                    <h4 className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400">Skills You'll Master</h4>
+                                </div>
 
-                        <div className="border-t pt-4">
-                            <p className="font-semibold text-gray-800 mb-2">Sessions</p>
-                            <p className="text-sm text-gray-700 mb-2">• Building Confidence & Overcoming Fear — mindset, quick hacks, extempore practice.</p>
-                            <p className="text-sm text-gray-700">• Grammar that Speaks — practical fixes + live "Spot & Fix".</p>
+                                <ul className="space-y-3 mb-6">
+                                    <li className="flex items-start">
+                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2 mt-1">•</span>
+                                        <span className="text-gray-700">Beat stage fear with mindset, breathing & grounding tools.</span>
+                                    </li>
+                                    <li className="flex items-start">
+                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2 mt-1">•</span>
+                                        <span className="text-gray-700">Project confidence using the <em>Preparation → Practice → Presence</em> approach.</span>
+                                    </li>
+                                    <li className="flex items-start">
+                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2 mt-1">•</span>
+                                        <span className="text-gray-700">Grammar that speaks: tense fixes, subject-verb agreement, transitions.</span>
+                                    </li>
+                                    <li className="flex items-start">
+                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2 mt-1">•</span>
+                                        <span className="text-gray-700">Hands-on: Extempore + "Spot & Fix" grammar game.</span>
+                                    </li>
+                                </ul>
+
+                                <div className="border-t pt-4">
+                                    <p className="font-semibold text-gray-800 mb-2">What We Will Cover</p>
+                                    <p className="text-sm text-gray-700 mb-2">• How to build confidence & overcome fear — mindset, quick hacks, extempore practice.</p>
+                                    <p className="text-sm text-gray-700 mb-6">• How to make grammar speak — practical fixes + live "Spot & Fix".</p>
+                                </div>
+                                <div className="border-t pt-4">
+                                    <p className="font-semibold text-gray-800 mb-2">Duration</p>
+                                    <p className="text-sm text-gray-700">2 sessions each lasting 90 minutes</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     {/* Day 2 */}
-                    <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 hover:shadow-2xl transition duration-300 hover:cursor-pointer hover:scale-105">
-                        <div className="flex justify-between items-center mb-6">
-                            <h3 className="text-2xl font-bold text-gray-900">Day 2 - Sunday</h3>
-                            <span className="text-sm text-gray-600 bg-gray-100 px-3 py-1 rounded-full">2 sessions x 90 mins</span>
+                    <div ref={day2Ref} className={`bg-white rounded-xl shadow-lg p-6 sm:p-8 hover:shadow-2xl transition duration-300 hover:cursor-pointer ${getAnimationClass('day2')}`}>
+                        <div className="text-center mb-6">
+                            <h3 className="text-2xl font-bold text-gray-900">Day 2 - Career Communication</h3>
                         </div>
 
-                        <h4 className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mb-4">Career Communication</h4>
+                        <div className="grid md:grid-cols-2 gap-8">
+                            {/* Left side - Image */}
+                            <div className="flex justify-center items-center">
+                                <img 
+                                    src={day2} 
+                                    alt="Day 2 - Career Communication" 
+                                    className="w-full max-w-md h-auto rounded-lg border-2 border-cyan-700 shadow-lg hover:shadow-2xl transition duration-300 hover:shadow-cyan-700"
+                                />
+                            </div>
 
-                        <ul className="space-y-3 mb-6">
-                            <li className="flex items-start">
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2 mt-1">•</span>
-                                <span className="text-gray-700">Answer "Tell me about yourself" with clarity using STAR.</span>
-                            </li>
-                            <li className="flex items-start">
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2 mt-1">•</span>
-                                <span className="text-gray-700">Virtual interview do's & don'ts that actually matter.</span>
-                            </li>
-                            <li className="flex items-start">
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2 mt-1">•</span>
-                                <span className="text-gray-700">Mock interviews in pairs with rapid feedback.</span>
-                            </li>
-                            <li className="flex items-start">
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2 mt-1">•</span>
-                                <span className="text-gray-700">Group Discussion drills with a simple scoring rubric.</span>
-                            </li>
-                        </ul>
+                            {/* Right side - Text content */}
+                            <div>
+                                <div className="flex items-center mb-4">
+                                    <BookOpen 
+                                        size={24} 
+                                        className="mr-3 text-blue-500"
+                                    />
+                                    <h4 className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400">Key Learning Areas</h4>
+                                </div>
 
-                        <div className="border-t pt-4">
-                            <p className="font-semibold text-gray-800 mb-2">Sessions</p>
-                            <p className="text-sm text-gray-700 mb-2">• Mastering Interviews — STAR, TMAY structure, mock interview.</p>
-                            <p className="text-sm text-gray-700">• Communication Games & Real-Life Practice — extempore, grammar game, GD with scoring.</p>
+                                <ul className="space-y-3 mb-6">
+                                    <li className="flex items-start">
+                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2 mt-1">•</span>
+                                        <span className="text-gray-700">Answer "Tell me about yourself" with clarity using STAR.</span>
+                                    </li>
+                                    <li className="flex items-start">
+                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2 mt-1">•</span>
+                                        <span className="text-gray-700">Virtual interview do's & don'ts that actually matter.</span>
+                                    </li>
+                                    <li className="flex items-start">
+                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2 mt-1">•</span>
+                                        <span className="text-gray-700">Mock interviews in pairs with rapid feedback.</span>
+                                    </li>
+                                    <li className="flex items-start">
+                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 mr-2 mt-1">•</span>
+                                        <span className="text-gray-700">Group Discussion drills with a simple scoring rubric.</span>
+                                    </li>
+                                </ul>
+
+                                <div className="border-t pt-4">
+                                    <p className="font-semibold text-gray-800 mb-2">What We Will Cover</p>
+                                    <p className="text-sm text-gray-700 mb-2">• How to master interviews — STAR, TMAY structure, mock interview.</p>
+                                    <p className="text-sm text-gray-700 mb-6">• How to excel in communication games & real-life practice — extempore, grammar game, GD with scoring.</p>
+                                </div>
+                                <div className="border-t pt-4">
+                                    <p className="font-semibold text-gray-800 mb-2">Duration</p>
+                                    <p className="text-sm text-gray-700">2 sessions each lasting 90 minutes</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -159,7 +277,7 @@ export default function Landing() {
             <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
                 <div className="grid md:grid-cols-2 gap-8">
                     {/* Who Should Join */}
-                    <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 hover:cursor-pointer hover:scale-105 transition duration-300 hover:shadow-2xl">
+                    <div ref={whoShouldJoinRef} className={`bg-white rounded-xl shadow-lg p-6 sm:p-8 hover:cursor-pointer hover:scale-105 transition duration-300 hover:shadow-2xl ${getAnimationClass('who-should-join')}`}>
                         <h3 className="text-2xl font-bold text-gray-900 mb-6">Who should join</h3>
                         <ul className="space-y-4">
                             <li className="flex items-start">
@@ -178,7 +296,7 @@ export default function Landing() {
                     </div>
 
                     {/* What You Need */}
-                    <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 hover:cursor-pointer hover:scale-105 transition duration-300 hover:shadow-2xl">
+                    <div ref={whatYouNeedRef} className={`bg-white rounded-xl shadow-lg p-6 sm:p-8 hover:cursor-pointer hover:scale-105 transition duration-300 hover:shadow-2xl ${getAnimationClass('what-you-need')}`}>
                         <h3 className="text-2xl font-bold text-gray-900 mb-6">What you need</h3>
                         <ul className="space-y-4">
                             <li className="flex items-start">
@@ -199,7 +317,7 @@ export default function Landing() {
             </section>
 
             {/* Enrollment Section */}
-            <section id="enroll-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 scroll-mt-20">
+            <section ref={enrollRef} id="enroll-section" className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 scroll-mt-20 ${getAnimationClass('enroll')}`}>
                 <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
                     Enroll Now
                 </h2>
@@ -259,8 +377,8 @@ export default function Landing() {
             </section>
 
             {/* FAQ Section */}
-            <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-12 text-center">FAQs</h2>
+            <section ref={faqRef} className={`max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 ${getAnimationClass('faq')}`}>
+                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-12 text-center">Frequently Asked Questions</h2>
 
                 <div className="space-y-4">
                     <div className="bg-white rounded-xl shadow-md overflow-hidden">
@@ -320,7 +438,7 @@ export default function Landing() {
             </section>
 
             {/* Footer */}
-            <footer className="bg-gradient-to-b from-gray-50 to-white text-white py-8 mt-12">
+            <footer ref={footerRef} className={`bg-gradient-to-b from-gray-50 to-white text-white py-8 mt-12 ${getAnimationClass('footer')}`}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-4">
                         <p className="text-sm text-black mb-4">© 2025 Grow100x.ai All rights reserved.</p>
