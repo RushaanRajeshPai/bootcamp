@@ -323,7 +323,7 @@ export default function Landing() {
             <footer className="bg-gradient-to-b from-gray-50 to-white text-white py-8 mt-12">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-4">
-                        <p className="text-sm text-black mb-4">© 2025 Grow100x. All rights reserved.</p>
+                        <p className="text-sm text-black mb-4">© 2025 Grow100x.ai All rights reserved.</p>
                         <div className="flex flex-wrap justify-center items-center gap-4 text-sm">
                             <span className="text-black">Connect with me:</span>
                             <a href="https://wa.me/917983151059" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 transition">
