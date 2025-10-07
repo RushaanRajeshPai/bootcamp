@@ -260,7 +260,7 @@ export default function Landing() {
 
             {/* FAQ Section */}
             <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-12">FAQs</h2>
+                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-12 text-center">FAQs</h2>
 
                 <div className="space-y-4">
                     <div className="bg-white rounded-xl shadow-md overflow-hidden">
